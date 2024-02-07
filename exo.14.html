@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exo</title>
-    <style>
-        /*CSS si nécessaire*/
-    </style>
+    <title>Vérification Année Bisextile chez PixelBay</title>
 </head>
-
 <body>
-    <h1>Exo 10</h1>
-    <!-- Votre code HTML ici -->
     <script>
-        // Votre script JS ici
+      let year= Number(prompt("Veuillez entrée une année"))
+            function bisextile(year) {
+    if (year % 4 ===0 && year % 100 !==0){
+    alert("L'année " + year + " est une année bisextile");}
+    else if (year % 400 ===0){
+       alert("L'année " + year + " est une année bisextile")}
+    else {
+        alert("L'année " + year + " N'est PAS une année bisextile");
+    }
+}
+bisextile(year);
+        
+
+        // Demandez à l'utilisateur d'entrer une année et affichez le résultat
     </script>
 </body>
-
 </html>
