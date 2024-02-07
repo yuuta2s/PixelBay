@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo</title>
+    <style>
+        /*CSS si nécessaire*/
+    </style>
+</head>
+
+<body>
+    <h1>Exo 10</h1>
+    <!-- Votre code HTML ici -->
+    <script>
+        // Votre script JS ici
+        //declaration des variables pour les prix, les promos et les prix apres promos
+        let price = 10;
+        let promoEte = 20;
+        let promoHiver = 30;
+        let promoSpe = 15;
+        //fonction pour la promo d'été
+
+        function proSummer() {
+            let promo = price - (price * promoEte) / 100
+            console.log(promo)
+        }
+        proSummer();
+
+        //fonction hiver 
+
+        function proWinter() {
+            let promo = price - (price * promoHiver) / 100
+            console.log(promo)
+        }
+        proWinter();
+
+        //funtion special
+
+        function proSpe() {
+            let promo = price - (price * promoSpe) / 100
+            console.log(promo)
+        }
+        proSpe();
+    </script>
+</body>
+
+</html>

@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exo</title>
+    <title>Les Jeux Vidéo du Calendrier PixelBay</title>
     <style>
-        /*CSS si nécessaire*/
+        ol {
+            width: 300px;
+            margin: 50px auto;
+            font-size: 18px;
+        }
     </style>
 </head>
+<ol id="listeJeux"></ol>
 
 <body>
-    <h1>Exo 10</h1>
-    <!-- Votre code HTML ici -->
     <script>
-        // Votre script JS ici
-    </script>
+  
+    let jeux = ["Space Adventure", "Castle Quest", "Mystery Island", "Robot Wars", "Jungle Journey", "Racing Rush", "Pirate's Treasure", "Alien Invasion", "Super Sports", "Haunted Mansion", "Galactic Odyssey", "Winter Wonderland"];
+    let mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+    let liste = document.getElementById("listeJeux");
+
+    for (let i = 0; i < mois.length; i++) {
+        // on créer un nouvel élément li à chaque itération
+        const lis = document.createElement('li');
+        
+        // on add le texte de l'élément li avec le mois et le jeu associé
+        lis.textContent = `${mois[i]}: ${jeux[i]}`;
+        
+        // on add l'élément li à la liste
+        liste.appendChild(lis);
+    }
+</script>
+ 
 </body>
 
 </html>

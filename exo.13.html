@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>PixelBay - Konami Code</title>
+    <style>
+        /* Ajoutez vos styles ici */
+        .konami-activated {
+            /* Styles après activation du code Konami */
+        background-image: url(https://i.postimg.cc/nzs9Fs8q/noctis.jpg);
+    background-repeat: no-repeat;
+background-size: 100%;}
+    </style>
+</head>
+<body>
+    <h1>Bienvenue chez PixelBay</h1>
+
+    <script>
+        var audio = new Audio('final-fantasy-77.mp3');
+        // Script pour détecter et réagir au code Konami
+        var current = 0;
+        var easterEgg = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"]
+var keyHandler = function(event){ 
+if (easterEgg.indexOf(event.key)< 0 || event.key !== easterEgg[current]){ //on utilise event.key pour designer l'action apres la suite de key press 
+    current= 0;
+    return;
+}
+
+current++;
+
+if (easterEgg.length === current){
+    current = 0;
+    alert('Code Konami incoming'); //
+    audio.play();
+    document.body.classList.add("konami-activated")
+}
+};
+
+document.addEventListener('keydown', keyHandler,false);
+
+    </script>
+</body>
+</html>
