@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo</title>
+    <style>
+        /*CSS si nécessaire*/
+    </style>
+</head>
+
+<body>
+    <h1>Exo 7</h1>
+    <!-- Votre code HTML ici -->
+    <script>
+        // Votre script JS ici
+        let stockCible = 100;
+        let jeuxEnStock = 0;
+        let liv = 0;//nouvelle var pour le nombre de livraison 
+
+        while (jeuxEnStock < stockCible) {//facile ici on cree une boucle avec le stock initial avec une limite du stock cile
+            liv++;//a chaque fois que la boucle s'effectue on rajoute 1 a la variable livraison.
+            jeuxEnStock += 5;//a chaque fois que la boucle s'effectue on ajoute 5 a la var jeuxenstock
+
+        }
+        console.log(jeuxEnStock); //on verif expected:100
+        console.log(liv)//on verif expected: 20
+
+    </script>
+</body>
+
+</html>

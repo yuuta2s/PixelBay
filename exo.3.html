@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo</title>
+    <style>
+        /*CSS si nécessaire*/
+    </style>
+</head>
+
+<body>
+    <h1>Exo 3</h1>
+    <!-- Votre code HTML ici -->
+
+    <script>
+        // Votre script JS ici
+        const NOM_DU_MAGASIN = "PixelBay"; //decla d'une const car le nom ne change pas
+        let jeuxVendus = 100; //decla de la var des jeux vendus 
+
+        function specialDay() { //decla d'une fonction pour y mettre les conditions
+            if (jeuxVendus > 100) {
+                console.log("Promotion prévue !")
+            }
+            else if (jeuxVendus >= 50 && jeuxVendus <= 100)
+            //entre parce que si il est sup ou egal a 50 ET inferieur ou egal a 100 
+            {
+                console.log("Reorganisation !")
+        }
+            else if (jeuxVendus < 50) {
+            console.log("Campagne de Pub imminente ! ")
+        }
+        else
+            alert("marche pas")
+        }
+        specialDay();//appel de la fonction
+        //jai crée une fonction mais on en a pas forcé besoin 
+    </script>
+</body>
+
+</html>

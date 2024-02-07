@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo</title>
+    <style>
+        /*CSS si nécessaire*/
+    </style>
+</head>
+
+<body>
+    <h1>Exo 4 </h1>
+    <!-- Votre code HTML ici -->
+    <script>
+        // Votre script JS ici
+        const CAPACITE_DE_LETAGERE = 10;
+        let jeuxEnStock = Number(prompt("Combien de jeux avez vous recus en stock aujourd'hui ?"))
+        let etagere = jeuxEnStock / CAPACITE_DE_LETAGERE //combien de fois on a mis de jeux dans une etagere
+        let result = jeuxEnStock % CAPACITE_DE_LETAGERE //le reste si la division n'est pas egale a 0
+        if (jeuxEnStock === 0) { //si il n'y a pas de jeux en stock
+            console.log("YA PAS DE JEUX ARGHHHH")
+        }
+        else if (result == 0) {//dans le cas ou il n'y a pas de jeux restant
+            console.log("il y'a " + Math.floor(etagere) + " etageres remplies")
+        }
+        else//si il reste des jeux avec math.floor pour arrondir a l'inferieur
+            (console.log("il y'a " + Math.floor(etagere) + " etageres remplies et il reste " + result + " jeux."))
+
+    </script>
+</body>
+
+</html>

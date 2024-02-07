@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Codes de Jeux de PixelBay</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 100px;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="displayContainer"></div>
+    <script>
+        let conteneur = document.getElementById("displayContainer");
+        let numeroDuJeu = prompt("Entrez le numéro du jeu (1, 2, 3 ou 4):");
+        switch (numeroDuJeu) {//switch et on appelle la variable
+            case "1":
+                conteneur.innerHTML = "Space Adventure"//on cible l'endroit dans l'html et on y integre de l'html en + 
+                break;
+            case "2":
+                conteneur.innerHTML = "Castle Quest"
+                break;
+            case "3":
+                conteneur.innerHTML = "Mystery Island"
+                break;
+            case "4":
+                conteneur.innerHTML = "Robot Wars"
+                break;
+        }
+    </script>
+</body>
+
+</html>
