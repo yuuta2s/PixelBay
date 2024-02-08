@@ -15,8 +15,8 @@
     <h1>Exo 19</h1>
     <!-- Votre code HTML ici -->
     <script>
-        
-        function creerJeu(name,year,genre) {
+
+        function creerJeu(name, year, genre) {
             return {
                 name: name,
                 year: year,
@@ -25,27 +25,49 @@
         }
 
         let jeuxRetro = [
-            creerJeu("Zelda",1998,"adventure"),
-            creerJeu("Mario",1983,"plateforme"),
-            creerJeu("Final Fantasy 7",1999,"RPG"),
+            creerJeu("Zelda", 1998, "adventure"),
+            creerJeu("Mario", 1983, "plateforme"),
+            creerJeu("Final Fantasy 7", 1999, "RPG"),
         ];
         let jeuxModern = [
-            creerJeu("Resident Evil 4 Remake",2023, "Horror"),
+            creerJeu("Resident Evil 4 Remake", 2023, "Horror"),
             creerJeu("Fortnite", 2017, "Battle Royale"),
             creerJeu("Cyberpunk 2077", 2020, "RPG"),
             creerJeu("The Last of Us", 2013, "Action-aventure"),
-            
+
         ];
-function afficherListeJeux(jeuxModern){
-    for(i=0;i<= jeuxModern.length;i++){
-        console.log([i]) //marche pas lol
-        
-    }
+
+        function afficherListeJeux(liste) {
+
+            liste.forEach(function (item) {
+                console.log(item)
+            });
+
+        }
+
+        afficherListeJeux(jeuxRetro);
+        afficherListeJeux(jeuxModern);
+
+
+
+        //fonction moyenne année
+        function calculerMoyenneAnneesSortie(liste) {
+    let totalAnnees = 0;
+
+    liste.forEach(jeu => {
+        totalAnnees += jeu.year;
+    });
+
+    let moyenneAnnees = totalAnnees / liste.length;
+    console.log(`Année moyenne de sortie: ${moyenneAnnees}`);
 }
-console.log(jeuxModern.afficherListeJeux);
-        console.log(jeuxModern);
-        console.log(jeuxRetro);
-        // Votre script JS ici
+
+// Calculer et afficher l'année moyenne de sortie des jeux rétro
+calculerMoyenneAnneesSortie(jeuxRetro);
+
+// Calculer et afficher l'année moyenne de sortie des jeux modernes
+calculerMoyenneAnneesSortie(jeuxModern);
+
     </script>
 </body>
 

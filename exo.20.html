@@ -15,7 +15,97 @@
     <h1>Exo 10</h1>
     <!-- Votre code HTML ici -->
     <script>
-        // Votre script JS ici
+        let collection = [
+            // Votre code pour créer la collection de jeux
+            {
+                name: "Space Adventure",
+                year: 1984,
+                score: [85, 87, 90, 78, 88]
+            },
+            {
+                name: "Resident Evil",
+                year: 2023,
+                score: [99, 86, 35, 77, 95]
+            },
+            {
+                name: "Persona",
+                year: 2018,
+                score: [25, 66, 73, 85, 55]
+            },
+            {
+                name: "Final Fantasy",
+                year: 2023,
+                score: [90, 36, 65, 37, 45]
+            },
+            {
+                name: "Resident Evil",
+                year: 2023,
+                score: [19, 63, 70, 71, 53]
+            }
+        ]
+
+
+
+        function afficherJeu(game) {
+            console.log(game.name, game.year)
+        }
+
+        afficherJeu(collection[0])
+
+        function afficherCollection(collection) {
+            collection.forEach(function (item) {
+                console.log(item);
+            })
+        }
+
+        afficherCollection(collection);
+
+        function calculerMoyenneScore(jeu) {
+            console.log(jeu.score);
+            const totalScore = jeu.score.reduce(function (accumulator, currentValue) {
+                return accumulator + currentValue;
+            })
+            console.log(totalScore);
+
+            
+            let moyenne = totalScore / (jeu.score.length);
+            console.log(moyenne);
+            
+        }
+        calculerMoyenneScore(collection[0]);
+
+function calculerMoyenneScoresCollection(collection){
+// Initialiser la somme totale des scores
+let totalScores = 0;
+
+// Parcourir chaque objet dans la collection
+for (let i = 0; i < collection.length; i++) {
+    // Vérifier si l'objet a un tableau de scores
+    if (collection[i].score && Array.isArray(collection[i].score)) {
+        // Utiliser reduce pour calculer la somme des scores de l'objet
+        let sommeScoresObjet = collection[i].score.reduce((acc, score) => acc + score, 0);
+
+        // Ajouter la somme des scores de l'objet à la somme totale
+        totalScores += sommeScoresObjet;
+    }
+}
+
+// Calculer la moyenne totale
+let grandeMoyenne = totalScores / collection.length;
+
+console.log("Moyenne totale des scores :", grandeMoyenne);
+}
+
+// Appel de la fonction avec votre collection
+calculerMoyenneScoresCollection(collection);
+
+
+        // calculerMoyenneScore(collection[1]);
+        // afficherJeu(jeu): Affiche les détails d'un jeu spécifique.
+        //il fo une fonction call back apres forEach
+        // afficherCollection(collection): Parcourt et affiche tous les jeux de la collection.
+        // calculerMoyenneScore(jeu): Calcule la moyenne des scores de critique d'un jeu.
+        // calculerMoyenneScoresCollection(collection): Détermine la moyenne des scores pour l'ensemble de la collection.
     </script>
 </body>
 
