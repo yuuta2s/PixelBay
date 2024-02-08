@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exo</title>
-    <style>
-        /*CSS si nécessaire*/
-    </style>
+    <title>Vérification des Jours Travaillés chez PixelBay</title>
 </head>
 
 <body>
-    <h1>Exo 10</h1>
-    <!-- Votre code HTML ici -->
     <script>
-        // Votre script JS ici
+        // Initialisation de la liste des jours fériés
+        const joursFeries2020 = ["2020-01-01", "2020-04-13", "2020-05-01", "2020-05-08", "2020-05-21", "2020-06-01", "2020-07-14", "2020-08-15", "2020-11-01", "2020-11-11", "2020-12-25"];
+
+// Déclaration de la fonction jourTravaille
+// Fonction pour déterminer si une date est un jour férié, un week-end ou un jour travaillé
+function jourTravaille(date, joursFeries) {
+    // Vérifier si la date est un jour férié
+    for (let i = 0; i < joursFeries.length; i++) {
+        let jourFerie = new Date(joursFeries[i]);
+
+        if (date.getTime() === jourFerie.getTime()) {
+            return "jour férié";
+        }
+    }
+
+    //  si la date est un week-end (samedi ou dimanche)
+    if (date.getDay() === 0 || date.getDay() === 6) {
+        return "week-end";
+    }
+
+    // Si la date n'est ni un jour férié ni un week-end, alors c'est un jour travaillé
+    return "jour travaillé";
+}
+
+//utilisation de la fonction jourTravaille pour une date donnée
+let dateTest = new Date('2020-01-01');
+console.log(jourTravaille(dateTest, joursFeries2020));
+
+
     </script>
 </body>
 

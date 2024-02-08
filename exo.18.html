@@ -12,9 +12,44 @@
 </head>
 
 <body>
-    <h1>Exo 10</h1>
+    <h1>Exo 18</h1>
     <!-- Votre code HTML ici -->
     <script>
+        let jeu1 = {
+            name: "Final Fantasy Rebirth",
+            year: 2024,
+            genre: "RPG",
+            score: 99,
+            affichage: function () {
+                console.log(this)
+            },
+            getPopularite: function () {
+    
+                return (this.score * this.year) / 100
+            }
+        };
+        let jeu2 = {
+            name: "Resident Evil 4 Remake",
+            year: 2023,
+            genre: "Horror",
+            score: 94,
+            affichage: function () {
+                console.log(this)
+            }
+            ,
+
+            getPopularite: function () {
+               
+                return (this.score * this.year) / 100
+
+            }
+        };
+
+        console.log(jeu1.getPopularite());
+       jeu1.affichage();
+
+       console.log(jeu2.getPopularite());
+       jeu2.affichage();
         // Votre script JS ici
     </script>
 </body>

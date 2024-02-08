@@ -12,9 +12,39 @@
 </head>
 
 <body>
-    <h1>Exo 10</h1>
+    <h1>Exo 19</h1>
     <!-- Votre code HTML ici -->
     <script>
+        
+        function creerJeu(name,year,genre) {
+            return {
+                name: name,
+                year: year,
+                genre: genre,
+            }
+        }
+
+        let jeuxRetro = [
+            creerJeu("Zelda",1998,"adventure"),
+            creerJeu("Mario",1983,"plateforme"),
+            creerJeu("Final Fantasy 7",1999,"RPG"),
+        ];
+        let jeuxModern = [
+            creerJeu("Resident Evil 4 Remake",2023, "Horror"),
+            creerJeu("Fortnite", 2017, "Battle Royale"),
+            creerJeu("Cyberpunk 2077", 2020, "RPG"),
+            creerJeu("The Last of Us", 2013, "Action-aventure"),
+            
+        ];
+function afficherListeJeux(jeuxModern){
+    for(i=0;i<= jeuxModern.length;i++){
+        console.log([i]) //marche pas lol
+        
+    }
+}
+console.log(jeuxModern.afficherListeJeux);
+        console.log(jeuxModern);
+        console.log(jeuxRetro);
         // Votre script JS ici
     </script>
 </body>

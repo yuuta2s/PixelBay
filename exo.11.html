@@ -23,27 +23,27 @@
         let promoSpe = 15;
         //fonction pour la promo d'été
 
-        function proSummer() {
+        function proSummer(price) {
             let promo = price - (price * promoEte) / 100
             console.log(promo)
         }
-        proSummer();
+        proSummer(price);
 
-        //fonction hiver 
+        //fonction hiver pour calculer la
 
-        function proWinter() {
+        function proWinter(price) {
             let promo = price - (price * promoHiver) / 100
             console.log(promo)
         }
-        proWinter();
+        proWinter(price);
 
         //funtion special
 
-        function proSpe() {
+        function proSpe(price) {
             let promo = price - (price * promoSpe) / 100
             console.log(promo)
         }
-        proSpe();
+        proSpe(price);
     </script>
 </body>
 
