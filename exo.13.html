@@ -21,7 +21,8 @@ background-size: 100%;}
         var current = 0;
         var easterEgg = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"]
 var keyHandler = function(event){ 
-if (easterEgg.indexOf(event.key)< 0 || event.key !== easterEgg[current]){ //on utilise event.key pour designer l'action apres la suite de key press 
+if (easterEgg.indexOf(event.key)< 0 || event.key !== easterEgg[current]){ 
+    //on utilise event.key pour designer l'action apres la suite de key press 
     current= 0;
     return;
 }

@@ -1,22 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exo</title>
+    <title>Barre de Progression de Scroll chez PixelBay</title>
     <style>
-        /*CSS si nécessaire*/
+        body {
+            margin: 0; /* Supprimer les marges par défaut du body */
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 15px;
+            background-color: #033c05;
+            width: 0;
+            transition: width 0.3s;
+        }
+
+        /* Ajoutez du contenu pour simuler une page plus longue */
+        .content {
+            height: 200vh; /* 200% de la hauteur de la vue actuelle pour créer du défilement */
+        }
     </style>
 </head>
-
 <body>
-    <h1>Exo 10</h1>
-    <!-- Votre code HTML ici -->
+    <!-- Votre contenu ici -->
+    <div class="content"></div>
+    <footer></footer>
+
     <script>
-        // Votre script JS ici
+        window.addEventListener("scroll", function() {
+            let hauteurTotale = document.documentElement.scrollHeight - window.innerHeight;
+            let positionScroll = window.scrollY;
+            let largeur = document.documentElement.clientWidth;
+
+            let pourcentageScroll = (positionScroll / hauteurTotale) * 100;
+            let footer = document.querySelector("footer");
+
+            if (footer) {
+                footer.style.width = pourcentageScroll + "%"; 
+            }
+        });
     </script>
 </body>
-
 </html>

@@ -16,6 +16,59 @@
     <!-- Votre code HTML ici -->
     <script>
         // Votre script JS ici
+        let collection = [
+            // Votre code pour créer la collection de jeux
+            {
+                name: "Dread Out",
+                year: 1984,
+                score: [85, 87, 90, 78, 88],
+                genre: "Horror"
+            },
+            {
+                name: "Resident Evil",
+                year: 2023,
+                score: [99, 86, 35, 77, 95],
+                genre: "Horror"
+            },
+            {
+                name: "Persona",
+                year: 2018,
+                score: [25, 66, 73, 85, 55],
+                genre: "Adventure"
+            },
+            {
+                name: "Final Fantasy",
+                year: 2023,
+                score: [90, 36, 65, 37, 45],
+                genre: "RPG"
+            },
+            {
+                name: "Fnaf",
+                year: 2023,
+                score: [19, 63, 70, 71, 53],
+                genre: "Horror"
+            }
+        ]
+
+// fonction pour filtrer les jeux par année de sortie
+function filtrerParAnnee(annee) {
+  return collection.filter(jeu => jeu.year > annee);
+}
+
+// fonction pour filtrer les jeux par genre
+function filtrerParGenre(genre) {
+  return collection.filter(jeu => jeu.genre === genre);
+}
+
+// on teste la fonction filtrerParAnnee
+let jeuxApres1985 = filtrerParAnnee(2022);
+console.log("Jeux sortis après 2022 :");
+console.log(jeuxApres1985);
+
+//on teste la fonction filtrerpargenre
+let jeuxArcade = filtrerParGenre("Horror");
+console.log("Jeux de genre Horror:");
+console.log(jeuxArcade);
     </script>
 </body>
 
