@@ -2,38 +2,114 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exo</title>
-    <style>
-        /*CSS si nécessaire*/
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Evil 4 </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<style>
+  body {
+    max-width: 1320px;
+  }
+
+  .product-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 200px 300px;
+    box-sizing: border-box;
+  }
+
+  .imglog {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .right-side {
+    padding-left: 20px;
+    box-sizing: border-box;
+  }
+</style>
 
 <body>
-    <h1>Exo 10</h1>
-    <!-- Votre code HTML ici -->
-    <main>
-      
-        <div class="product-panel d-flex f-ww">
-          <img src="https://i.postimg.cc/6QxphzZH/Resident-Evil-4-remake-cover.jpg" alt="cover art leon resident evil 4" class="imglog">
-          <div class="right-side">
-            <h1>Resident Evil 4 : Remake</h1>
-            <!-- quantité+prix initial + pourcentage de la tva
-            recalculer le prix et prix total  -->
-            <input type="text" name="" id="" placeholder="Name">
-            <input type="email" name="" id="" placeholder="Email">
-            <input type="password" name="" id="" placeholder="Password">
-            <input type="password" name="" id="" placeholder="Password-confirm">
-            <input type="submit" value="let's go" class="submit-btn">
+  <h1>Exo 10</h1>
+  <!-- Votre code HTML ici -->
+  <main>
+
+    <div class="product-panel">
+      <img src="https://i.postimg.cc/6QxphzZH/Resident-Evil-4-remake-cover.jpg" alt="cover art leon resident evil 4" class="imglog">
+      <div class="right-side">
+        <div class="cart-item">
+          <div class="row">
+            <div class="col-md-7 center-item">
+              <h1>Resident Evil 4 : Remake( $40 )</h1>
+            </div>
+            
+            <div class="col-md-5 center-item">
+              <div class="input-group game-spinner">
+                <button id="game-minus" class="btn btn-default"><i class="fa-solid fa-minus" style="color: #000000;"></i></button>
+                <input id="RE4-number" type="number" min="0" class="form-control text-center" value="1">
+                <button id="game-plus" class="btn btn-default"><i class="fa-solid fa-plus" style="color: #000000;"></i></button>
+              </div>
+              <h5>$ <span id="RE4-total">40</span></h5>
+              <i class="fa-solid fa-xmark remove-item" style="color: #080808;"></i>
+            </div>
           </div>
         </div>
-  
-      </main>
+        <div class="panier">
+          <h5 id="sub-total">Subtotal: </h5>
+          <h5 id="tax-amount">Tax:</h5>
+          <h5 id="total-price">Total:</h5>
+        </div>
+      </div>
+    </div>
+  </main>
+    
     <script>
-        // Votre script JS ici
-    </script>
+      // Votre script JS ici
+      function updateNumber(product, price, isIncreasing) {
+        const caseInput = document.getElementById(product + '-number');
+        let caseNumber = caseInput.value;
+        if (isIncreasing) {
+          caseNumber = parseInt(caseNumber) + 1;
+        } else if (caseNumber > 0) {
+          caseNumber = parseInt(caseNumber) - 1;
+      }
+
+      caseInput.value = caseNumber;
+      // update case total 
+      const caseTotal = document.getElementById(product + '-total');
+      caseTotal.innerText = caseNumber * price;
+      calculateTotal();
+    }
+
+    function getInputvalue(product) {
+      const productInput = document.getElementById(product + '-number');
+      const productNumber = parseInt(productInput.value);
+      return productNumber;
+    }
+
+    function calculateTotal() {
+      const gameTotal = getInputvalue('RE4') * 40;
+      const subTotal = gameTotal;
+      const tax = 2;
+      const totalPrice = subTotal + tax;
+
+      // update on the html 
+      document.getElementById('sub-total').innerText = "Subtotal : " + subTotal + " $";
+      document.getElementById('tax-amount').innerText = "TVA : " + tax + " $";
+      document.getElementById('total-price').innerText = "Prix TTC: " + totalPrice + " $";
+    }
+
+    // update du prix du jeu grace a l'ecouteur d'evenements
+    document.getElementById('game-plus').addEventListener('click', function () {
+      updateNumber('RE4', 40, true);
+    });
+
+    document.getElementById('game-minus').addEventListener('click', function () {
+      updateNumber('RE4', 40, false);
+    });
+  </script>
 </body>
 
 </html>
