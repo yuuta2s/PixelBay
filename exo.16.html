@@ -18,7 +18,7 @@
         // Votre script JS ici
         let inventaire = ["etagere", "jeux", "console", "figurine", "manettes"]
         inventaire.push("ff7", "persona5")
-        inventaire.pop()
+        inventaire.splice(0,1)
 
         for (i = 0; i < inventaire.length; i++) {
             console.log("Article : " + inventaire[i])

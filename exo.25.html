@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
         }
     </style>
 </head>
+
 <body>
     <main>
         <div class="todo-app">
@@ -60,11 +62,11 @@
                 listItem.textContent = task;
 
                 const removeButton = document.createElement("button");
-                removeButton.textContent = "Supprimer";
+                removeButton.textContent = "Supp";
                 removeButton.addEventListener("click", () => removeTask(i));
 
                 const toggleButton = document.createElement("button");
-                toggleButton.textContent = "Compléter";
+                toggleButton.textContent = "Done";
                 toggleButton.addEventListener("click", () => toggleCompleted(i));
 
                 listItem.appendChild(removeButton);
@@ -83,4 +85,5 @@
         displayTasks();
     </script>
 </body>
+
 </html>

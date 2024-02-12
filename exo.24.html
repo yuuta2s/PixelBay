@@ -47,6 +47,7 @@
       border: 0;
       border-bottom: 2px solid #a4a4a4;
       background-color: #1b0227;
+      color: #ffffff;
     }
 
     main {
@@ -60,6 +61,7 @@
 
     body {
       background-color: #1b0227;
+
     }
 
 
@@ -71,6 +73,7 @@
       font-size: 14px;
       font-weight: 900;
       padding: 5px;
+      color: #000000;
     }
 
     input.submit-btn:hover {
@@ -100,13 +103,17 @@
     }
 
     .form__field {
-      width: 100%;
+      width: 50%;
     }
 
     header {
       display: flex;
       justify-content: space-around;
 
+    }
+
+    label {
+      color: #ffffff;
     }
   </style>
 </head>
@@ -125,7 +132,7 @@
       <div class="m-searchbar__btn">
         <input type="text" class="m-searchTerm" placeholder="What are you looking for?">
         <button type="submit" class="searchButton">
-          <i class="fa fa-search" alt="loupe"></i>
+          <i class="fa fa-search"></i>
         </button>
       </div>
     </div>
@@ -136,21 +143,132 @@
     <div class="login-panel">
       <img src="https://i.postimg.cc/q7zv1BXj/arcade.jpg" alt="salle d'arcade" class="imglog">
       <div class="right-side">
+
         <h1>Sign Up</h1>
         <p>Sign up and get a 10% discount on your first game !
         </p>
-        <input type="text" name="" id="" placeholder="Name">
-        <input type="email" name="" id="" placeholder="Email">
-        <input type="password" name="" id="" placeholder="Password">
-        <input type="password" name="" id="" placeholder="Password-confirm">
-        <input type="submit" value="let's game !" class="submit-btn">
+        <form id="signUpForm">
+          <label for="name">Nom :</label>
+          <input type="text" id="name" name="name" required minlength="2" maxlength="20">
+
+          <label for="email">Email :</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="password">Mot de passe :</label>
+          <input type="password" id="password" name="password" required minlength="6" maxlength="20">
+
+          <label for="password-confirm">Confirmer le mot de passe :</label>
+          <input type="password" id="password-confirm" name="password-confirm" required>
+
+          <label for="contact">Contact téléphonique</label>
+          <input id="contact" type="tel" placeholder="Contact téléphonique" name="contact">
+
+          <label for="age-confirm">J'ai plus de 18 ans :</label>
+          <input type="checkbox" id="age-confirm" name="age-confirm" required>
+          <button type="submit" id="submit-btn">let's game </button>
+
       </div>
     </div>
 
   </main>
+
   <script>
-    // Votre script JS ici
+    function handleFormSubmit(event) {
+      event.preventDefault();
+  
+      const form = document.getElementById("signUpForm");
+      const name = form.elements["name"].value;
+      const email = form.elements["email"].value;
+      const password = form.elements["password"].value;
+      const passwordConfirm = form.elements["password-confirm"].value;
+      const contact = document.getElementById('contact').value.trim();
+      const ageConfirm = form.elements["age-confirm"].checked;
+  
+      if (!validateName(name)) {
+        alert("Le prénom ne doit contenir que des lettres.");
+        return;
+      }
+  
+      if (!validatePassword(passwordConfirm)) {
+        return;
+      }
+  
+      if (!validateEmail(email)) {
+        alert("L'adresse e-mail doit contenir le caractère @.");
+        return;
+      }
+  
+      if (!validatePasswordConfirmation(password, passwordConfirm)) {
+        return;
+      }
+  
+      if (!validatePhone(contact)) {
+        showMessage("Veuillez saisir un numéro de téléphone valide (10 chiffres).");
+        return;
+      }
+  
+      if (!ageConfirm) {
+        alert("Vous devez confirmer que vous avez plus de 18 ans.");
+        return;
+      }
+  
+      // Reste de la validation...
+  
+      if (!name || !email || !password || !passwordConfirm) {
+        alert("Erreur, veuillez remplir tous les champs.");
+      } else {
+        alert(`Merci ${name} pour votre inscription ! Nous avons envoyé votre badge membre sur l'adresse mail : ${email} !`);
+      }
+    }
+  
+    function validateName(name) {
+      const nameRegex = /^[a-zA-Z ']+$/;
+      return name.match(nameRegex);
+    }
+  
+    function validatePassword(passwordConfirm) {
+      const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+      if (!passwordConfirm.match(passwordRegex)) {
+        alert("Le mot de passe doit contenir au moins un chiffre, un caractère spécial et avoir une longueur d'au moins 8 caractères.");
+        document.getElementById("password-confirm").style.borderBottom = "2px solid red";
+        return false;
+      } else {
+        document.getElementById("password-confirm").style.borderBottom = "2px solid #a4a4a4";
+        return true;
+      }
+    }
+  
+    function validateEmail(email) {
+      return email.includes("@");
+    }
+  
+    function validatePasswordConfirmation(password, passwordConfirm) {
+      if (password !== passwordConfirm) {
+        alert("Les mots de passe ne sont pas identiques.");
+        document.getElementById("password-confirm").style.borderBottom = "2px solid red";
+        return false;
+      } else {
+        document.getElementById("password-confirm").style.borderBottom = "2px solid #a4a4a4";
+        return true;
+      }
+    }
+  
+    function validatePhone(contact) {
+      const phoneRegex = /^\d{10}$/;
+      return phoneRegex.test(contact);
+    }
+  
+    function showMessage(message) {
+      alert(message);
+    }
+  
+    // Assuming you have a form element with an ID "signUpForm"
+    const form = document.getElementById("signUpForm");
+  
+    // Add the submit event listener and call the validation function
+    form.addEventListener("submit", handleFormSubmit);
   </script>
+  
 </body>
 
 </html>
