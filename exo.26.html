@@ -5,12 +5,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Ma liste de tâches</title>
     <style>
         /* Styles CSS */
         .completed {
             text-decoration: line-through;
         }
+        .code-konami-activated{
+            background-image:url(https://i.postimg.cc/rwp57KMg/chad.jpg);
+            background-size: 100%;
+color: #fff;
+        }
+
+        body {
+            background: rgb(238,174,202);
+background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        }
+
+        main {
+
+            display: flex;
+            justify-content: center;
+            padding: 200px 300px;
+            box-sizing: border-box;
+        }
+
+
+        h1 {
+            font-family: "Protest Strike", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: antiquewhite;
+        }
+               
+        .btn-grad {
+            background-image: linear-gradient(to right, #000000 0%, #53346D  51%, #000000  100%);
+            margin: 10px;
+            padding: 5px 5px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+          }
+
+          .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+    
     </style>
 </head>
 
@@ -19,15 +71,18 @@
         <div class="todo-app">
             <h1>Ma liste de tâches</h1>
             <section id="numTaches"></section>
-            <input type="text" id="taskInput" placeholder="Ajouter une tâche">
+            <input type="text" id="taskInput" placeholder="Ajouter une tâche" minlength="3" maxlength="63">
             <ul id="taskList"></ul>
         </div>
-
+        
         <div class="tasks">
             <h2></h2>
         </div>
     </main>
     <script>
+        
+        var audio = new Audio ('bye-bye-mewing_fMVssQz.mp3')
+        var audio2 = new Audio('gta-v-death-sound-effect-102.mp3')
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         const liste = document.getElementById("taskList");
 
@@ -73,11 +128,13 @@
                 }
 
                 const removeButton = document.createElement("button");
-                removeButton.textContent = "Supp";
+                removeButton.innerHTML = ` <i class="fa-solid fa-xmark" style="color: #fff;"></i>`;
+                removeButton.classList.add("btn-grad");
                 removeButton.addEventListener("click", () => removeTask(i));
 
                 const toggleButton = document.createElement("button");
-                toggleButton.textContent = "Done";
+                toggleButton.innerHTML = ` <i class="fa-solid fa-check" style="color:#fff ;"></i>`;
+                toggleButton.classList.add("btn-grad");
                 toggleButton.addEventListener("click", () => toggleCompleted(i));
 
                 listItem.appendChild(removeButton);
@@ -94,6 +151,27 @@
         });
 
         displayTasks();
+
+        var current = 0;
+        var easterEgg = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"]
+var keyHandler = function(event){ 
+if (easterEgg.indexOf(event.key)< 0 || event.key !== easterEgg[current]){ 
+    //on utilise event.key pour designer l'action apres la suite de key press 
+    current= 0;
+    return;
+}
+
+current++;
+
+if (easterEgg.length === current){
+    current = 0;
+    alert('Code Konami incoming'); //
+    audio.play();
+    document.body.classList.add("code-konami-activated")
+}
+};
+
+document.addEventListener('keydown', keyHandler,false);
     </script>
 
 

@@ -10,6 +10,11 @@
         background-image: url(https://i.postimg.cc/nzs9Fs8q/noctis.jpg);
     background-repeat: no-repeat;
 background-size: 100%;}
+.failed{
+    background-image: url(https://i.postimg.cc/HW5qHcZY/wasted.jpg) ;
+    background-repeat: repeat;
+    background-size: 100%; 
+}
     </style>
 </head>
 <body>
@@ -17,6 +22,7 @@ background-size: 100%;}
 
     <script>
         var audio = new Audio('final-fantasy-77.mp3');
+        var audio2 = new Audio('gta-v-death-sound-effect-102.mp3')
         // Script pour détecter et réagir au code Konami
         var current = 0;
         var easterEgg = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"]
@@ -24,6 +30,8 @@ var keyHandler = function(event){
 if (easterEgg.indexOf(event.key)< 0 || event.key !== easterEgg[current]){ 
     //on utilise event.key pour designer l'action apres la suite de key press 
     current= 0;
+        audio2.play();
+        document.body.classList.add("failed")
     return;
 }
 
