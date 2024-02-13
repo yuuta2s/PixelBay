@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Barre de Progression de Scroll chez PixelBay</title>
     <style>
         body {
-            margin: 0; /* Supprimer les marges par défaut du body */
+            margin: 0;
+            /* Supprimer les marges par défaut du body */
         }
 
         footer {
@@ -20,17 +22,19 @@
 
         /* Ajoutez du contenu pour simuler une page plus longue */
         .content {
-            height: 200vh; /* 200% de la hauteur de la vue actuelle pour créer du défilement */
+            height: 200vh;
+            /* 200% de la hauteur de la vue actuelle pour créer du défilement */
         }
     </style>
 </head>
+
 <body>
     <!-- Votre contenu ici -->
     <div class="content"></div>
     <footer></footer>
 
     <script>
-        window.addEventListener("scroll", function() {
+        window.addEventListener("scroll", function () {
             let hauteurTotale = document.documentElement.scrollHeight - window.innerHeight;
             let positionScroll = window.scrollY;
             let largeur = document.documentElement.clientWidth;
@@ -39,9 +43,10 @@
             let footer = document.querySelector("footer");
 
             if (footer) {
-                footer.style.width = pourcentageScroll + "%"; 
+                footer.style.width = pourcentageScroll + "%";
             }
         });
     </script>
 </body>
+
 </html>

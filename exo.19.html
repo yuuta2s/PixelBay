@@ -44,7 +44,7 @@
             });
 
         }
-        
+
 
         afficherListeJeux(jeuxRetro);
         afficherListeJeux(jeuxModern);
@@ -53,21 +53,21 @@
 
         //fonction moyenne année
         function calculerMoyenneAnneesSortie(liste) {
-    let totalAnnees = 0;
+            let totalAnnees = 0;
 
-    liste.forEach(jeu => {
-        totalAnnees += jeu.year;
-    });
+            liste.forEach(jeu => {
+                totalAnnees += jeu.year;
+            });
 
-    let moyenneAnnees = totalAnnees / liste.length;
-    console.log(`Année moyenne de sortie: ${moyenneAnnees}`);
-}
+            let moyenneAnnees = totalAnnees / liste.length;
+            console.log(`Année moyenne de sortie: ${moyenneAnnees}`);
+        }
 
-// Calculer et afficher l'année moyenne de sortie des jeux rétro
-calculerMoyenneAnneesSortie(jeuxRetro);
+        // calculer et afficher l'année moyenne de sortie des jeux rétro
+        calculerMoyenneAnneesSortie(jeuxRetro);
 
-// Calculer et afficher l'année moyenne de sortie des jeux modernes
-calculerMoyenneAnneesSortie(jeuxModern);
+        // calculer et afficher l'année moyenne de sortie des jeux modernes
+        calculerMoyenneAnneesSortie(jeuxModern);
 
     </script>
 </body>

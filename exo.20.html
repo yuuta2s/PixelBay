@@ -67,37 +67,37 @@
             })
             console.log(totalScore);
 
-            
+
             let moyenne = totalScore / (jeu.score.length);
             console.log(moyenne);
-            
+
         }
         calculerMoyenneScore(collection[0]);
 
-function calculerMoyenneScoresCollection(collection){
-// Initialiser la somme totale des scores
-let totalScores = 0;
+        function calculerMoyenneScoresCollection(collection) {
+            // Initialiser la somme totale des scores
+            let totalScores = 0;
 
-// Parcourir chaque objet dans la collection
-for (let i = 0; i < collection.length; i++) {
-    // Vérifier si l'objet a un tableau de scores
-    if (collection[i].score && Array.isArray(collection[i].score)) {
-        // Utiliser reduce pour calculer la somme des scores de l'objet
-        let sommeScoresObjet = collection[i].score.reduce((acc, score) => acc + score, 0);
+            // Parcourir chaque objet dans la collection
+            for (let i = 0; i < collection.length; i++) {
+                // Vérifier si l'objet a un tableau de scores
+                if (collection[i].score && Array.isArray(collection[i].score)) {
+                    // Utiliser reduce pour calculer la somme des scores de l'objet
+                    let sommeScoresObjet = collection[i].score.reduce((acc, score) => acc + score, 0);
 
-        // Ajouter la somme des scores de l'objet à la somme totale
-        totalScores += sommeScoresObjet;
-    }
-}
+                    // Ajouter la somme des scores de l'objet à la somme totale
+                    totalScores += sommeScoresObjet;
+                }
+            }
 
-// on calc la moyenne totale
-let grandeMoyenne = totalScores / collection.length;
+            // on calc la moyenne totale
+            let grandeMoyenne = totalScores / collection.length;
 
-console.log("Moyenne totale des scores :", grandeMoyenne);
-}
+            console.log("Moyenne totale des scores :", grandeMoyenne);
+        }
 
 
-calculerMoyenneScoresCollection(collection);
+        calculerMoyenneScoresCollection(collection);
 
     </script>
 </body>

@@ -125,7 +125,7 @@
     <nav class="m-header__navbar">
 
       <a href="acceuil" class="m-header__a">Acceuil</a>
-      <a href="recettes" class="m-header__a">Consoles</a>
+      <a href="consoles" class="m-header__a">Consoles</a>
       <a href="tendances" class="m-header__a">Tendances</a>
     </nav>
     <div class="m-searchbar d-flex jc-fe">
@@ -175,7 +175,7 @@
   <script>
     function handleFormSubmit(event) {
       event.preventDefault();
-  
+
       const form = document.getElementById("signUpForm");
       const name = form.elements["name"].value;
       const email = form.elements["email"].value;
@@ -183,49 +183,49 @@
       const passwordConfirm = form.elements["password-confirm"].value;
       const contact = document.getElementById('contact').value.trim();
       const ageConfirm = form.elements["age-confirm"].checked;
-  
+
       if (!validateName(name)) {
         alert("Le prénom ne doit contenir que des lettres.");
         return;
       }
-  
+
       if (!validatePassword(passwordConfirm)) {
         return;
       }
-  
+
       if (!validateEmail(email)) {
         alert("L'adresse e-mail doit contenir le caractère @.");
         return;
       }
-  
+
       if (!validatePasswordConfirmation(password, passwordConfirm)) {
         return;
       }
-  
+
       if (!validatePhone(contact)) {
         showMessage("Veuillez saisir un numéro de téléphone valide (10 chiffres).");
         return;
       }
-  
+
       if (!ageConfirm) {
         alert("Vous devez confirmer que vous avez plus de 18 ans.");
         return;
       }
-  
+
       // Reste de la validation...
-  
+
       if (!name || !email || !password || !passwordConfirm) {
         alert("Erreur, veuillez remplir tous les champs.");
       } else {
         alert(`Merci ${name} pour votre inscription ! Nous avons envoyé votre badge membre sur l'adresse mail : ${email} !`);
       }
     }
-  
+
     function validateName(name) {
       const nameRegex = /^[a-zA-Z ']+$/;
       return name.match(nameRegex);
     }
-  
+
     function validatePassword(passwordConfirm) {
       const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
       if (!passwordConfirm.match(passwordRegex)) {
@@ -237,11 +237,11 @@
         return true;
       }
     }
-  
+
     function validateEmail(email) {
       return email.includes("@");
     }
-  
+
     function validatePasswordConfirmation(password, passwordConfirm) {
       if (password !== passwordConfirm) {
         alert("Les mots de passe ne sont pas identiques.");
@@ -252,23 +252,23 @@
         return true;
       }
     }
-  
+
     function validatePhone(contact) {
       const phoneRegex = /^\d{10}$/;
       return phoneRegex.test(contact);
     }
-  
+
     function showMessage(message) {
       alert(message);
     }
-  
+
     // Assuming you have a form element with an ID "signUpForm"
     const form = document.getElementById("signUpForm");
-  
+
     // Add the submit event listener and call the validation function
     form.addEventListener("submit", handleFormSubmit);
   </script>
-  
+
 </body>
 
-</html>    
+</html>
