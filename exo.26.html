@@ -80,54 +80,68 @@
         </div>
     </main>
     <script>
-        //addition d'audio 
-        var audio = new Audio('bye-bye-mewing_fMVssQz.mp3')
-        var audio2 = new Audio('gta-v-death-sound-effect-102.mp3')
-        //JSON.parse permet de transformer la chaine de carac en objet 
+       
+        var audio = new Audio('bye-bye-mewing_fMVssQz.mp3');
+
+        // récupération des tâches depuis localStorage ou initialisation à un tableau vide
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         const liste = document.getElementById("taskList");
-//fonction pour ajouter les taches a 
+
+        // Fonction pour ajouter une tâche
         function addTask() {
             const taskInput = document.getElementById("taskInput");
             const taskText = taskInput.value.trim();
 
             if (taskText !== "") {
+                // Ajout de la tâche sous forme d'objet dans le tableau tasks
                 tasks.push({ text: taskText, completed: false });
+                // Affichage des tâches
                 displayTasks();
+                // Effacement du champ d'entrée
                 taskInput.value = "";
+                // Sauvegarde des tâches dans localStorage
                 saveTasks();
             }
         }
-
+console.log(tasks);//juste pour verifier si les taches s'ajoute a l'array
+        // fonction pour supprimer une tâche à partir de son index
         function removeTask(index) {
             tasks.splice(index, 1);
+            // affichage des tâches après suppression
             displayTasks();
             saveTasks();
         }
 
+        // fonction pour basculer l'état complété/non complété d'une tâche
         function toggleCompleted(index) {
             tasks[index].completed = !tasks[index].completed;
+            // Affichage des tâches après modification
             displayTasks();
             saveTasks();
         }
 
+        //fonction pour sauvegarder les tâches dans localStorage
         function saveTasks() {
             localStorage.setItem('tasks', JSON.stringify(tasks));
         }
 
+        // fonction pour afficher les tâches dans la liste
         function displayTasks() {
             liste.innerHTML = "";
             for (let i = 0; i < tasks.length; i++) {
                 const task = tasks[i];
 
+                // création d'un élément li pour chaque tâche
                 const listItem = document.createElement("li");
                 listItem.id = `task-${i}`;
                 listItem.textContent = task.text;
 
+                // barrée la tache si elle est complétée
                 if (task.completed) {
                     listItem.classList.add("completed");
                 }
 
+                // création des boutons de suppression et de bascule
                 const removeButton = document.createElement("button");
                 removeButton.innerHTML = ` <i class="fa-solid fa-xmark" style="color: #fff;"></i>`;
                 removeButton.classList.add("btn-grad");
@@ -138,26 +152,33 @@
                 toggleButton.classList.add("btn-grad");
                 toggleButton.addEventListener("click", () => toggleCompleted(i));
 
+                // Ajout des boutons à l'élément li
                 listItem.appendChild(removeButton);
                 listItem.appendChild(toggleButton);
 
+                // Ajout de l'élément li à la liste
                 liste.appendChild(listItem);
             }
         }
 
+        // Gestionnaire d'événement pour l'ajout de tâches lors de l'appui sur Enter
         document.getElementById("taskInput").addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
                 addTask();
             }
         });
 
+        // appel de la fonction
         displayTasks();
 
+        // initialisation des variables pour l'easter egg (code konami)
         var current = 0;
-        var easterEgg = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"]
+        var easterEgg = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+
+        // gestionnaire d'événement pour le code konami
         var keyHandler = function (event) {
             if (easterEgg.indexOf(event.key) < 0 || event.key !== easterEgg[current]) {
-                //on utilise event.key pour designer l'action apres la suite de key press 
+                // réinitialisation si la touche pressée ne correspond pas à la séquence
                 current = 0;
                 return;
             }
@@ -166,16 +187,19 @@
 
             if (easterEgg.length === current) {
                 current = 0;
-                alert('Code Konami incoming'); //
+                alert('Code Konami incoming');
+                // petit audio après l'avoir compléter
                 audio.play();
-                document.body.classList.add("code-konami-activated")
+                // ajout de la classe pour affecter le style du code konami
+                document.body.classList.add("code-konami-activated");
             }
         };
 
+        // ajout du gestionnaire d'événement pour les touches du clavier
         document.addEventListener('keydown', keyHandler, false);
+
+
     </script>
-
-
 </body>
 
 </html>

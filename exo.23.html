@@ -29,11 +29,9 @@
   }
 </style>
 
-<body>
-  <h1>Exo 10</h1>
-  <!-- Votre code HTML ici -->
-  <main>
 
+<body>
+  <main>
     <div class="product-panel">
       <img src="https://i.postimg.cc/6QxphzZH/Resident-Evil-4-remake-cover.jpg" alt="cover art leon resident evil 4"
         class="imglog">
@@ -52,8 +50,6 @@
                 <button id="game-plus" class="btn btn-default"><i class="fa-solid fa-plus"
                     style="color: #000000;"></i></button>
               </div>
-              <h5>$ <span id="RE4-total">40</span></h5>
-
             </div>
           </div>
         </div>
@@ -67,42 +63,43 @@
   </main>
 
   <script>
-    // Votre script JS ici
+
+    //fonction pour mettre a jour la quantité et le prix
     function updateNumber(product, price, isIncreasing) {
-      const caseInput = document.getElementById(product + '-number');
-      let caseNumber = caseInput.value;
+      const gameInput = document.getElementById(product + '-number');
+      let gameNumber = gameInput.value;
+
       if (isIncreasing) {
-        caseNumber = parseInt(caseNumber) + 1;
-      } else if (caseNumber > 0) {
-        caseNumber = parseInt(caseNumber) - 1;
+        gameNumber = parseInt(gameNumber) + 1;
+      } else if (gameNumber > 0) {
+        gameNumber = parseInt(gameNumber) - 1;
       }
 
-      caseInput.value = caseNumber;
-      // update case total 
-      const caseTotal = document.getElementById(product + '-total');
-      caseTotal.innerText = caseNumber * price;
+      gameInput.value = gameNumber;
+
       calculateTotal();
     }
-
+    //fontion pour recupérer la valeur entrée dans le champ de saisie 
     function getInputvalue(product) {
-      const productInput = document.getElementById(product + '-number');
-      const productNumber = parseInt(productInput.value);
-      return productNumber;
+      const gameInput = document.getElementById(product + '-number');
+      const gameNumber = parseInt(gameInput.value);
+      return gameNumber;
     }
-
+    //fonction pour calculer le sous total , la taxe et le prix total
     function calculateTotal() {
       const gameTotal = getInputvalue('RE4') * 40;
       const subTotal = gameTotal;
-      const tax = 2;
+      const taxRate = 0.20;
+      const tax = subTotal * taxRate;
       const totalPrice = subTotal + tax;
+      //affichage du sous total, de la tax calculée et du total
 
-      // update de l'html 
       document.getElementById('sub-total').innerText = "Subtotal : " + subTotal + " $";
       document.getElementById('tax').innerText = "TVA : " + tax + " $";
       document.getElementById('total-price').innerText = "Prix TTC: " + totalPrice + " $";
     }
 
-    // update du prix du jeu grace a l'ecouteur d'evenements
+    // event listeners sur les boutons +/- et le champ de saisie
     document.getElementById('game-plus').addEventListener('click', function () {
       updateNumber('RE4', 40, true);
     });
@@ -110,7 +107,12 @@
     document.getElementById('game-minus').addEventListener('click', function () {
       updateNumber('RE4', 40, false);
     });
+
+    document.getElementById('RE4-number').addEventListener('input', function () {
+      calculateTotal();
+    });
   </script>
 </body>
+
 
 </html>

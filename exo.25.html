@@ -16,51 +16,71 @@
 
 <body>
     <main>
+        <!-- Formulaire de la liste de tâches -->
         <div class="todo-app">
             <h1>Ma liste de tâches</h1>
             <section id="numTaches"></section>
+            <!-- Champ de saisie pour ajouter une nouvelle tâche -->
             <input type="text" id="taskInput" placeholder="Ajouter une tâche">
+            <!-- Liste des tâches affichée sous forme d'ul -->
             <ul id="taskList"></ul>
         </div>
 
+        <!-- Section pour afficher les tâches -->
         <div class="tasks">
             <h2></h2>
         </div>
     </main>
+
     <script>
+        // Tableau pour stocker les tâches
         let newTask = [];
+        // Élément HTML de la liste
         const liste = document.getElementById("taskList");
 
+        // Fonction pour ajouter une tâche
         function addTask() {
             const taskInput = document.getElementById("taskInput");
             const taskText = taskInput.value.trim();
 
             if (taskText !== "") {
+                // Ajout de la tâche au tableau
                 newTask.push(taskText);
+                // Affichage des tâches mises à jour
                 displayTasks();
+                // Effacement du champ de saisie
                 taskInput.value = "";
             }
         }
 
+        // Fonction pour supprimer une tâche
         function removeTask(index) {
+            // Suppression de la tâche du tableau
             newTask.splice(index, 1);
+            // Affichage des tâches mises à jour
             displayTasks();
         }
 
+        // Fonction pour basculer l'état complété d'une tâche
         function toggleCompleted(index) {
             const taskElement = document.getElementById(`task-${index}`);
+            // Basculement de la classe "completed" pour indiquer l'état
             taskElement.classList.toggle("completed");
         }
 
+        // Fonction pour afficher les tâches
         function displayTasks() {
+            // Effacement du contenu actuel de la liste
             liste.innerHTML = "";
             for (let i = 0; i < newTask.length; i++) {
                 const task = newTask[i];
 
+                // Création d'un élément li pour chaque tâche
                 const listItem = document.createElement("li");
                 listItem.id = `task-${i}`;
                 listItem.textContent = task;
 
+                // Création des boutons pour supprimer et marquer comme terminé
                 const removeButton = document.createElement("button");
                 removeButton.textContent = "Supp";
                 removeButton.addEventListener("click", () => removeTask(i));
@@ -69,21 +89,26 @@
                 toggleButton.textContent = "Done";
                 toggleButton.addEventListener("click", () => toggleCompleted(i));
 
+                // Ajout des boutons à l'élément li
                 listItem.appendChild(removeButton);
                 listItem.appendChild(toggleButton);
 
+                // Ajout de l'élément li à la liste
                 liste.appendChild(listItem);
             }
         }
 
+        // Gestionnaire d'événement pour ajouter une tâche lorsque la touche "Enter" est pressée
         document.getElementById("taskInput").addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
                 addTask();
             }
         });
 
+        // Affichage initial des tâches
         displayTasks();
     </script>
 </body>
+
 
 </html>

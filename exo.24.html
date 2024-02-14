@@ -173,6 +173,8 @@
   </main>
 
   <script>
+
+    //grosse fonction pour gerer le formulaire apres le submit
     function handleFormSubmit(event) {
       event.preventDefault();
 
@@ -221,11 +223,14 @@
       }
     }
 
+    //validation du nom
+
     function validateName(name) {
       const nameRegex = /^[a-zA-Z ']+$/;
       return name.match(nameRegex);
     }
 
+    //validation du mdp
     function validatePassword(passwordConfirm) {
       const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
       if (!passwordConfirm.match(passwordRegex)) {
@@ -238,10 +243,12 @@
       }
     }
 
+    //val de l'email
     function validateEmail(email) {
       return email.includes("@");
     }
 
+    //val de la conf du mdp
     function validatePasswordConfirmation(password, passwordConfirm) {
       if (password !== passwordConfirm) {
         alert("Les mots de passe ne sont pas identiques.");
@@ -253,19 +260,21 @@
       }
     }
 
+    //val du contact
     function validatePhone(contact) {
       const phoneRegex = /^\d{10}$/;
       return phoneRegex.test(contact);
     }
 
+
     function showMessage(message) {
       alert(message);
     }
 
-    // Assuming you have a form element with an ID "signUpForm"
+    // recup du form avec son id "signUpForm"
     const form = document.getElementById("signUpForm");
 
-    // Add the submit event listener and call the validation function
+    //event listener pour appeller la fonction apres le submit du form
     form.addEventListener("submit", handleFormSubmit);
   </script>
 

@@ -93,7 +93,7 @@
         video.style.objectFit = 'cover';
         video.style.zIndex = '-1';
 
-       //JSON.parse
+        //JSON.parse
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         const liste = document.getElementById("taskList");
 
@@ -179,7 +179,11 @@
                 alert('Code Konami incoming'); //
                 document.body.appendChild(video);
                 video.play();
-        
+                //la fonction setTimeout :qui met la video en pause apres 1 min (60k ms)
+                setTimeout(function () {
+                    video.pause();
+                }, 60000);
+
             }
 
         };
